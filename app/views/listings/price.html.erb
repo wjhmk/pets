@@ -1,0 +1,8 @@
+<%= render "listings/varnab" %>
+
+<%= form_for @listing do |f| %>
+  <p><%= f.label "一泊あたりの料金" %>
+  <%= f.text_field :price_pernight, placeholder: "例: 100", class: "form-control" %>
+  
+  <p><%= f.submit "更新" %>
+<% end %>

@@ -1,0 +1,9 @@
+<%= form_for @listing do |f| %>
+  <p><%= f.label "タイトル" %>
+  <%= f.text_field :listing_title,placeholder:"リスティングタイトルを記載しましょう" %>
+  
+  <p><%= f.label "内容" %>
+  <%= f.text_area :listing_content,placeholder:"リスティングの内容につdevelopmentいて記述してください" %>
+  
+  <p><%= f.submit "更新" %>
+<% end %>

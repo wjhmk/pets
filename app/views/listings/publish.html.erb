@@ -1,0 +1,8 @@
+<%= render "listings/varnab" %>
+
+<%= form_for @listing do |f| %>
+  <p><%= f.label "公開/非公開" %>
+  <%= f.select :action, [["公開する","true"], ["非公開にする","false"]], {prompt:"選択してください"}, {required: 'true', autofocus: 'true', class: 'form-control'} %>
+
+  <p><%= f.submit "更新" %>
+<% end %>
