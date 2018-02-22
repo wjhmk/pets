@@ -16,3 +16,12 @@
 <!--        <%= f.submit "この日程で予約する", class: "btn btn-danger btn-wide" %>-->
 <!--    </div>-->
 <!--<% end %>-->
+
+
+<h2>近くのリスティング</h2>
+
+<% for listing in @listing.nearbys(10) %>
+<p>-------------------------------
+<p><%= link_to listing.address, listing_path(listing) %>
+<p></p><%= link_to listing.user.name,user_path(listing.user) %>
+<% end %>
