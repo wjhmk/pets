@@ -13,8 +13,9 @@
     <ul>
           <li><a href="/">ホーム</a></li>
       <% if user_signed_in? %>
-          <li><%= link_to "#{current_user.email}さんのプロフィール",user_path(current_user) %></li>
+          <li><%= link_to "#{current_user.email.split("@")[0]}さんのプロフィール",user_path(current_user) %></li>
           <li><%= link_to "シッターになる",new_listing_path %></li>
+          <li><%= link_to "リスティング管理",listings_path %></li>
           <li><%= link_to "アカウント編集",edit_user_registration_path %></li>
           <li><%= link_to "ログアウト",destroy_user_session_path,method: :delete %></li>
       <% else %>

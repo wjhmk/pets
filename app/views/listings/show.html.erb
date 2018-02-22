@@ -1,2 +1,18 @@
-<h1>Listings#show</h1>
-<p>Find me in app/views/listings/show.html.erb</p>
+<h1>リスティング詳細</h1>
+<p><%= @listing.home_type %>
+<p><%= @listing.pet_size %>
+<p><%= @listing.breeding_years %>
+<p><%= @listing.address %>
+<p><%= @listing.listing_title %>
+<p><%= @listing.listing_content %>
+<p><%= @listing.price_pernight %>
+<p><%= @listing.action %>
+<p><%= @listing.image %>
+-------------------------
+<p><%= link_to @listing.user.name,user_path(@listing.user) %>
+
+<!--<%= form_for @listing, :html => { multipart: true } do |f| %>                                   -->
+<!--    <div class="actions text-center">-->
+<!--        <%= f.submit "この日程で予約する", class: "btn btn-danger btn-wide" %>-->
+<!--    </div>-->
+<!--<% end %>-->

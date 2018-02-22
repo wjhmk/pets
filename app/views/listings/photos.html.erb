@@ -2,7 +2,7 @@
 
 <%= form_for @listing do |f| %>
   <p><%= f.label "写真" %>
-  <%= f.text_field :price_pernight, placeholder: "例: 100", class: "form-control" %>
+  <%= f.file_field :image %>
   
   <p><%= f.submit "更新" %>
 <% end %>

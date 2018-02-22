@@ -1,8 +1,9 @@
 class ListingsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_listing, only: [:update, :basics, :description, :address, :price, :photos, :calendar, :bankaccount, :publish]
+  before_action :set_listing, only: [:show,:update, :basics, :description, :address, :price, :photos, :calendar, :bankaccount, :publish]
   
   def index
+    @listings = current_user.listings.all
   end
 
   def show
@@ -62,7 +63,7 @@ class ListingsController < ApplicationController
     end
   
     def listing_params
-      params.require(:listing).permit(:home_type,:pet_type,:pet_size,:breeding_years,:price_pernight,:address,:listing_title,:listing_content,:action)
+      params.require(:listing).permit(:home_type,:pet_type,:pet_size,:breeding_years,:price_pernight,:address,:listing_title,:listing_content,:action,:image)
     end
 end
 

@@ -1,2 +1,8 @@
-<h1>Listings#index</h1>
-<p>Find me in app/views/listings/index.html.erb</p>
+<h1><%= current_user.name %>さんのリスティング一覧</h1>
+
+<% @listings.each do |listing| %>
+----------------------------
+<p><%= image_tag listing.image(:small) %>
+<p><%= listing.listing_title %>
+<p><%= link_to "残り5ステップ",manage_listing_basics_path(listing) %><br>
+<% end %>
