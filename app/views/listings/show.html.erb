@@ -8,20 +8,51 @@
 <p><%= @listing.price_pernight %>
 <p><%= @listing.action %>
 <p><%= @listing.image %>
--------------------------
+<p>---------------------------------<br>
 <p><%= link_to @listing.user.name,user_path(@listing.user) %>
 
-<!--<%= form_for @listing, :html => { multipart: true } do |f| %>                                   -->
-<!--    <div class="actions text-center">-->
-<!--        <%= f.submit "この日程で予約する", class: "btn btn-danger btn-wide" %>-->
-<!--    </div>-->
-<!--<% end %>-->
 
+<p>---------------------------------<br>
+<p>
+    <% if @listing.price_pernight.blank? %>
+     <h2>値段が設定されていません
+    <% else %>
+    <%= @listing.price_pernight %> 円（一晩あたり）
+    <% end %>
+<!--/listings/:listing_id/reservations(.:format)のうち、第一引数で:listing_idを指定し、第二引数で新しく作られたreservations,を@listing.reservations.newで指定している。-->
+<%= form_for [@listing, @listing.reservations.new ] do |f| %>
+
+<!--この三つが一緒に送られる-->
+<%= f.hidden_field :listing_id, value:@listing.id %>
+<%= f.hidden_field :price_pernight, value:@listing.price_pernight %>
+<%= f.hidden_field :total_price, value:@listing.id %>
+
+
+<%= f.text_field :start_date, :placeholder => "開始" %>
+<%= f.text_field :end_date, :placeholder => "終了" %>
+
+
+<%= f.submit "この日程で予約する", class: "btn btn-danger btn-wide" %>
+<% end %>
+
+<p>---------------------------------<br>
+<h2>レビュー（<%= @reviews.count %>）</h2>
+<p>---------------------------------<br>
+
+<%= render "reviews/form" %>
+<%= render "reviews/list" %>
 
 <h2>近くのリスティング</h2>
 
 <% for listing in @listing.nearbys(10) %>
-<p>-------------------------------
+<p>---------------------------------<br>
+<p><%= link_to listing.listing_title, listing %>
 <p><%= link_to listing.address, listing_path(listing) %>
 <p></p><%= link_to listing.user.name,user_path(listing.user) %>
 <% end %>
+
+
+
+
+
+

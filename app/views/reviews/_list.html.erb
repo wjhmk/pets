@@ -1,0 +1,11 @@
+<% if @reviews.count == 0 %>
+<h4>レビューはありません</h4>
+<% else %>
+ <% @reviews.order("id desc").each do |review| %>
+     <p>-------------------------</br>
+     <%= review.user.email %>さんのレビュー
+     <%= review.description %>
+     <%= review.created_at %>
+     <%= link_to "削除する",[@listing,review],method: :delete, data: {confirm:"削除しますか？"} if current_user && current_user == review.user %>
+ <% end %>
+<% end %>

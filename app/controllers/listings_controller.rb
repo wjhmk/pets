@@ -7,7 +7,7 @@ class ListingsController < ApplicationController
   end
 
   def show
-    
+    @reviews = @listing.reviews
   end
 
   def new

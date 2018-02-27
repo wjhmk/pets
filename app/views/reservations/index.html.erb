@@ -1,0 +1,6 @@
+<% @reservations.each do |reservation| %>
+<p>----------------------------------<br>
+<%= reservation.listing.id %><br>
+<%= reservation.listing.created_at %><br>
+<%= reservation.listing.user.name %><br>
+<% end %>

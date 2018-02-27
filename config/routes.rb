@@ -1,10 +1,22 @@
 Rails.application.routes.draw do
   
-  resources :listings
+  resources :listings do 
+   resources :reservations, :only => :create
+  end
+  
+  get "/reservations" => "reservations#index"
+  
+  
   root to: "pages#index"
   devise_for :users, controllers: { registrations: 'registrations' }
   
   resources :users,only:[:show]
+  
+  resources :listings do 
+   resources :reviews, only:[:create,:destroy]
+  end
+
+  
   get 'manage-listing/:id/basics' => 'listings#basics', as: 'manage_listing_basics'
   get 'manage-listing/:id/description' => 'listings#description', as: 'manage_listing_description'
   get 'manage-listing/:id/address' => 'listings#address', as: 'manage_listing_address'
@@ -13,6 +25,7 @@ Rails.application.routes.draw do
   get 'manage-listing/:id/calendar' => 'listings#calendar', as: 'manage_listing_calendar'
   get 'manage-listing/:id/bankaccount' => 'listings#bankaccount', as: 'manage_listing_bankaccount'
   get 'manage-listing/:id/publish' => 'listings#publish', as: 'manage_listing_publish'
+  
   
   
   

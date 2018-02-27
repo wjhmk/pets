@@ -1,0 +1,5 @@
+<%= form_for([@listing,@listing.reviews.new]) do |f| %>
+<%= f.text_area :description %>
+<%= f.hidden_field :listing_id,value: @listing.id %>
+<%= f.submit "このシッターを評価する" %>
+<% end %>

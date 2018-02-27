@@ -1,5 +1,7 @@
 class Listing < ApplicationRecord
   belongs_to :user
+  has_many :reservations
+  has_many :reviews
   
   validates :home_type,presence:true
   validates :pet_type,presence:true
